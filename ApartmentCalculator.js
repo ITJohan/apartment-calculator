@@ -1,13 +1,11 @@
-import './components/TableContainer.mjs';
+import './components/SalaryContainer.mjs';
 
 class ApartmentCalculator extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML += `
-      <table-container></table-container>
-      <table-container></table-container>
-      <table-container></table-container>
+      <salary-container expanded="true"></salary-container>
     `;
   }
 }
