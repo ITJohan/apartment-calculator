@@ -60,14 +60,14 @@ class YearModule extends HTMLElement {
           background: none;
           border: none;
           cursor: pointer;
-          font-size: 2.3rem;
+          font-size: 1.5rem;
         }
       </style>
       <section>
         <table>
           <caption>
             <div class="header">
-              <h2>Year 1</h2>
+              <h4>Year 1</h4>
               <button id="expand-button">➕</button>
             </div>
           </caption>

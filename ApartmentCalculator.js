@@ -19,6 +19,7 @@ class ApartmentCalculator extends HTMLElement {
       </header>
       <main>
         <year-module></year-module>
+        <year-module></year-module>
       </main>
     `;
   }
