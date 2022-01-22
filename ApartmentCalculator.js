@@ -1,6 +1,7 @@
 import './components/SalaryModule.mjs';
 import './components/LoanModule.mjs';
 import './components/RentModule.mjs';
+import './components/YearModule.mjs';
 
 class ApartmentCalculator extends HTMLElement {
   constructor() {
@@ -14,7 +15,8 @@ class ApartmentCalculator extends HTMLElement {
         <rent-module></rent-module>
       </header>
       <main>
-        YearModule
+        <year-module></year-module>
+        <year-module></year-module>
       </main>
     `;
   }

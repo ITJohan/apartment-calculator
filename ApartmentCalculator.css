@@ -7,26 +7,33 @@
 
 html,
 body {
+  background-color: black;
   height: 100%;
 }
 
 apartment-calculator {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   margin: auto;
   padding: 16px;
   width: fit-content;
 }
 
+main,
 header {
+  background-color: gray;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 8px;
+  padding: 8px;
 }
 
 main {
-  display: flex;
+  flex-direction: column;
 }
 
 section {
