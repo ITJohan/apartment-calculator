@@ -6,7 +6,7 @@ class RentModule extends HTMLElement {
     this.attachShadow({ mode: 'open' });
 
     this.shadowRoot.innerHTML = `
-      <style>@import '../ApartmentCalculator.css';</style>
+      <style>@import './ApartmentCalculator.css';</style>
       <section>
         <table>
           <caption>Rent</caption>

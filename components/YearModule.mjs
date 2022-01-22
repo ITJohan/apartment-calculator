@@ -27,7 +27,7 @@ class YearModule extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>
-        @import '../ApartmentCalculator.css';
+        @import './ApartmentCalculator.css';
 
         tr {
           height: 32px;
@@ -117,7 +117,7 @@ class YearModule extends HTMLElement {
               <td>8273456945</td>
               <td>07248356</td>
               <td>29875234</td>
-              <td>9283745</td>
+              <td>92837412345</td>
               <td>2304598</td>
               <td class="separator"></td>
               <td>90283476</td>
@@ -129,7 +129,6 @@ class YearModule extends HTMLElement {
 
     const expandButton = this.shadowRoot.getElementById('expand-button');
     expandButton.addEventListener('click', () => {
-      console.log('test');
       const tBody = this.shadowRoot.querySelector('tbody');
       tBody.classList.toggle('hide');
       expandButton.textContent =

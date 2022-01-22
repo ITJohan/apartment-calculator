@@ -12,9 +12,9 @@ class ApartmentCalculator extends HTMLElement {
       <header>
         <h1>Apartment Loan Calculator</h1>
         <nav>
-          <rent-module></rent-module>   
-          <loan-module></loan-module>
           <salary-module></salary-module>
+          <loan-module></loan-module>
+          <rent-module></rent-module>   
         </nav>
       </header>
       <main>
