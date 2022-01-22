@@ -26,7 +26,17 @@ class YearModule extends HTMLElement {
     };
 
     this.shadowRoot.innerHTML = `
-      <style>@import '../ApartmentCalculator.css';</style>
+      <style>
+        @import '../ApartmentCalculator.css';
+
+        tr {
+          height: 32px;
+        }
+        
+        tr:nth-child(2n) {
+          background-color: rgb(240, 240, 240);
+        }
+      </style>
       <section>
         <table>
           <caption>Year 1</caption>

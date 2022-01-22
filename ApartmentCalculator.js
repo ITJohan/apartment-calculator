@@ -11,12 +11,13 @@ class ApartmentCalculator extends HTMLElement {
       <style>@import '../ApartmentCalculator.css';</style>
       <header>
         <h1>Apartment Loan Calculator</h1>
-        <salary-module></salary-module>
-        <loan-module></loan-module>
-        <rent-module></rent-module>
+        <nav>
+          <rent-module></rent-module>   
+          <loan-module></loan-module>
+          <salary-module></salary-module>
+        </nav>
       </header>
       <main>
-        <year-module></year-module>
         <year-module></year-module>
       </main>
     `;
