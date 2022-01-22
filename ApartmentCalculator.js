@@ -5,7 +5,7 @@ class ApartmentCalculator extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML += `
-      <salary-container expanded="true"></salary-container>
+      <salary-container></salary-container>
     `;
   }
 }

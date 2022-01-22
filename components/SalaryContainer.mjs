@@ -1,13 +1,9 @@
 class SalaryContainer extends HTMLElement {
-  static get observedAttributes() {
-    return ['expanded'];
-  }
-
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
 
-    this.shadowRoot.innerHTML += `
+    this.shadowRoot.innerHTML = `
       <style>
         @import '../ApartmentCalculator.css';
       
