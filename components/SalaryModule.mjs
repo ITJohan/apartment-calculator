@@ -15,33 +15,7 @@ class SalaryModule extends HTMLElement {
     this.attachShadow({ mode: 'open' });
 
     this.shadowRoot.innerHTML = `
-      <style>
-        @import '../ApartmentCalculator.css';
-      
-        section {
-          background-color: lightgray;
-          border-radius: 4px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-          padding: 8px;
-        }
-
-        caption {
-          font-size: 1.5rem;
-          text-align: left;
-        }
-
-        th, td {
-          padding: 4px;
-          text-align: right;
-        }
-
-        input {
-          background-color: transparent;
-          border: none;
-          border-bottom: 1px solid black;
-          width: 80px;
-        }
-      </style>
+      <style>@import '../ApartmentCalculator.css';</style>
       <section>
         <table>
           <caption>Salary</caption>
