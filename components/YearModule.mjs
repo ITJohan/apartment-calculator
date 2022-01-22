@@ -10,7 +10,7 @@ class YearModule extends HTMLElement {
         <td>100 000 kr</td>
         <td>100 000 kr</td>
         <td>200 000 kr</td>
-        <td></td>
+        <td class="separator"></td>
         <td>10123</td>
         <td>15235123</td>
         <td>234222</td>
@@ -19,7 +19,7 @@ class YearModule extends HTMLElement {
         <td>3454357</td>
         <td>243573457</td>
         <td>23456234</td>
-        <td></td>
+        <td class="separator"></td>
         <td>11800</td>
       </tr>
       `;
@@ -36,17 +36,48 @@ class YearModule extends HTMLElement {
         tr:nth-child(2n) {
           background-color: rgb(240, 240, 240);
         }
+
+        th,
+        td {
+          text-align: left;
+        }
+
+        .header {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .hide {
+          display: none;
+        }
+
+        .separator {
+          width: 40px;
+        }
+
+        #expand-button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 2.3rem;
+        }
       </style>
       <section>
         <table>
-          <caption>Year 1</caption>
+          <caption>
+            <div class="header">
+              <h2>Year 1</h2>
+              <button id="expand-button">➕</button>
+            </div>
+          </caption>
           <thead>
             <tr>
               <th>Month</th>
               <th>Person one salary</th>
               <th>Person two salary</th>
               <th>Total salary</th>
-              <th></th>
+              <th class="separator"></th>
               <th>Loan</th>
               <th>Interest</th>
               <th>Total loan</th>
@@ -55,11 +86,11 @@ class YearModule extends HTMLElement {
               <th>Subsidies</th>
               <th>Total cost</th>
               <th>Money in the sink</th>
-              <th></th>
+              <th class="separator"></th>
               <th>Rent</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="hide">
             ${generateMonthRow('Jan')}
             ${generateMonthRow('Feb')}
             ${generateMonthRow('Mar')}
@@ -73,13 +104,13 @@ class YearModule extends HTMLElement {
             ${generateMonthRow('Nov')}
             ${generateMonthRow('Dec')}
           </tbody>
-          <tfooter>
+          <tfoot>
             <tr>
               <th>Total</th>
               <td>1000000</td>
               <td>23200000</td>
               <td>21023459</td>
-              <td></td>
+              <td class="separator"></td>
               <td>284383246</td>
               <td>28468346</td>
               <td>12398373</td>
@@ -88,13 +119,22 @@ class YearModule extends HTMLElement {
               <td>29875234</td>
               <td>9283745</td>
               <td>2304598</td>
-              <td></td>
+              <td class="separator"></td>
               <td>90283476</td>
             </tr>
-          </tfooter>
+          </tfoot>
         </table>
       </section>
     `;
+
+    const expandButton = this.shadowRoot.getElementById('expand-button');
+    expandButton.addEventListener('click', () => {
+      console.log('test');
+      const tBody = this.shadowRoot.querySelector('tbody');
+      tBody.classList.toggle('hide');
+      expandButton.textContent =
+        expandButton.textContent === '➕' ? '➖' : '➕';
+    });
   }
 }
 

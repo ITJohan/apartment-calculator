@@ -37,7 +37,6 @@ main,
 header {
   align-items: end;
   display: flex;
-  gap: 16px;
   justify-content: space-between;
   padding: 8px;
 }
@@ -56,7 +55,9 @@ section {
 }
 
 caption {
+  display: table-caption;
   font-size: 1.5rem;
+  /* justify-content: space-between; */
   text-align: left;
 }
 
