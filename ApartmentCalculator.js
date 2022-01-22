@@ -1,11 +1,13 @@
-import './components/SalaryContainer.mjs';
+import './components/SalaryModule.mjs';
+import './components/LoanModule.mjs';
 
 class ApartmentCalculator extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML += `
-      <salary-container></salary-container>
+      <salary-module></salary-module>
+      <loan-module></loan-module>
     `;
   }
 }

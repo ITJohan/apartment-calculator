@@ -1,4 +1,4 @@
-class SalaryContainer extends HTMLElement {
+class SalaryModule extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -10,7 +10,13 @@ class SalaryContainer extends HTMLElement {
         section {
           background-color: lightgray;
           border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
           padding: 8px;
+        }
+
+        caption {
+          font-size: 1.5rem;
+          text-align: left;
         }
 
         th, td {
@@ -27,6 +33,7 @@ class SalaryContainer extends HTMLElement {
       </style>
       <section>
         <table>
+          <caption>Salary</caption>
           <thead>
             <tr>
               <th></th>
@@ -37,12 +44,8 @@ class SalaryContainer extends HTMLElement {
           <tbody>
             <tr>
               <th>Salary</th>
-              <td>
-                <input id="person-one-salary" type="number" min="0">kr
-              </td>
-              <td>
-                <input id="person-two-salary" type="number" min="0">kr
-              </td>
+              <td><input id="person-one-salary" type="number" min="0">kr</td>
+              <td><input id="person-two-salary" type="number" min="0">kr</td>
             </tr>
             <tr>
               <th>Bonus</th>
@@ -82,4 +85,4 @@ class SalaryContainer extends HTMLElement {
   }
 }
 
-customElements.define('salary-container', SalaryContainer);
+customElements.define('salary-module', SalaryModule);
