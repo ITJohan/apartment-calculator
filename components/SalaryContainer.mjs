@@ -34,42 +34,55 @@ class SalaryContainer extends HTMLElement {
           <thead>
             <tr>
               <th></th>
-              <th>Johan</th>
-              <th>Astrid</th>
+              <th>Person one</th>
+              <th>Person two</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th>Salary</th>
               <td>
-                <input id="salary" type="number"> kr
+                <input id="person-one-salary" type="number" min="0">kr
               </td>
-              <td>667 000 kr</td>
+              <td>
+                <input id="person-two-salary" type="number" min="0">kr
+              </td>
             </tr>
             <tr>
               <th>Bonus</th>
-              <td>60 000 kr</td>
-              <td></td>
+              <td><input id="person-one-bonus" type="number" min="0">kr</td>
+              <td><input id="person-two-bonus" type="number" min="0">kr</td>
             </tr>
             <tr>
               <th>Yearly increase</th>
-              <td>5,9%</td>
-              <td>5,8%</td>
+              <td><input id="person-one-increase" type="number" min="0" step="0.1">%</td>
+              <td><input id="person-two-increase" type="number" min="0" step="0.1">%</td>
             </tr>
             <tr>
               <th>Tax</th>
-              <td>34%</td>
-              <td>34%</td>
+              <td><input id="person-one-tax" type="number" min="0" step="0.1">%</td>
+              <td><input id="person-two-tax" type="number" min="0" step="0.1">%</td>
             </tr>
           </tbody>
         </table>
       </section>
     `;
 
-    const salaryInput = this.shadowRoot.getElementById('salary');
-    salaryInput.addEventListener('input', (e) => {
-      console.log(e.target.value);
-    });
+    const setEventListener = (id) => {
+      const inputElement = this.shadowRoot.getElementById(id);
+      inputElement.addEventListener('input', (e) => {
+        window.sessionStorage.setItem(id, e.target.value);
+      });
+    };
+
+    setEventListener('person-one-salary');
+    setEventListener('person-two-salary');
+    setEventListener('person-one-bonus');
+    setEventListener('person-two-bonus');
+    setEventListener('person-one-increase');
+    setEventListener('person-two-increase');
+    setEventListener('person-one-tax');
+    setEventListener('person-two-tax');
   }
 }
 
