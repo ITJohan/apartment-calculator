@@ -1,4 +1,15 @@
 class SalaryModule extends HTMLElement {
+  #ids = [
+    'person-one-salary',
+    'person-two-salary',
+    'person-one-bonus',
+    'person-two-bonus',
+    'person-one-increase',
+    'person-two-increase',
+    'person-one-tax',
+    'person-two-tax',
+  ];
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -67,21 +78,16 @@ class SalaryModule extends HTMLElement {
       </section>
     `;
 
-    const setEventListener = (id) => {
+    for (const id of this.#ids) {
       const inputElement = this.shadowRoot.getElementById(id);
+      const savedValue = window.localStorage.getItem(id);
+      if (!!savedValue) {
+        inputElement.value = savedValue;
+      }
       inputElement.addEventListener('input', (e) => {
-        window.sessionStorage.setItem(id, e.target.value);
+        window.localStorage.setItem(id, e.target.value);
       });
-    };
-
-    setEventListener('person-one-salary');
-    setEventListener('person-two-salary');
-    setEventListener('person-one-bonus');
-    setEventListener('person-two-bonus');
-    setEventListener('person-one-increase');
-    setEventListener('person-two-increase');
-    setEventListener('person-one-tax');
-    setEventListener('person-two-tax');
+    }
   }
 }
 

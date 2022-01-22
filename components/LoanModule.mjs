@@ -1,4 +1,6 @@
 class LoanModule extends HTMLElement {
+  #ids = ['loan', 'apartment-costs', 'interest', 'interest-subsidies'];
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -56,17 +58,16 @@ class LoanModule extends HTMLElement {
       </section>
     `;
 
-    const setEventListener = (id) => {
+    for (const id of this.#ids) {
       const inputElement = this.shadowRoot.getElementById(id);
+      const savedValue = window.localStorage.getItem(id);
+      if (!!savedValue) {
+        inputElement.value = savedValue;
+      }
       inputElement.addEventListener('input', (e) => {
-        window.sessionStorage.setItem(id, e.target.value);
+        window.localStorage.setItem(id, e.target.value);
       });
-    };
-
-    setEventListener('loan');
-    setEventListener('apartment-costs');
-    setEventListener('interest');
-    setEventListener('interest-subsidies');
+    }
   }
 }
 
