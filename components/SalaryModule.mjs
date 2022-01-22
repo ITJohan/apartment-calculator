@@ -29,23 +29,39 @@ class SalaryModule extends HTMLElement {
           <tbody>
             <tr>
               <th>Salary</th>
-              <td><input id="person-one-salary" type="number" min="0">kr</td>
-              <td><input id="person-two-salary" type="number" min="0">kr</td>
+              <td>
+                <input id="${this.#ids[0]}" type="number" min="0">kr
+              </td>
+              <td>
+                <input id="${this.#ids[1]}" type="number" min="0">kr
+              </td>
             </tr>
             <tr>
               <th>Bonus</th>
-              <td><input id="person-one-bonus" type="number" min="0">kr</td>
-              <td><input id="person-two-bonus" type="number" min="0">kr</td>
+              <td>
+                <input id="${this.#ids[2]}" type="number" min="0">kr
+              </td>
+              <td>
+                <input id="${this.#ids[3]}" type="number" min="0">kr
+              </td>
             </tr>
             <tr>
               <th>Yearly increase</th>
-              <td><input id="person-one-increase" type="number" min="0" step="0.1">%</td>
-              <td><input id="person-two-increase" type="number" min="0" step="0.1">%</td>
+              <td>
+                <input id="${this.#ids[4]}" type="number" min="0" step="0.1">%
+              </td>
+              <td>
+                <input id="${this.#ids[5]}" type="number" min="0" step="0.1">%
+              </td>
             </tr>
             <tr>
               <th>Tax</th>
-              <td><input id="person-one-tax" type="number" min="0" step="0.1">%</td>
-              <td><input id="person-two-tax" type="number" min="0" step="0.1">%</td>
+              <td>
+                <input id="${this.#ids[6]}" type="number" min="0" step="0.1">%
+              </td>
+              <td>
+                <input id="${this.#ids[7]}" type="number" min="0" step="0.1">%
+              </td>
             </tr>
           </tbody>
         </table>
