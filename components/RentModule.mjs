@@ -1,5 +1,7 @@
 class RentModule extends HTMLElement {
-  #ids = ['rent', 'rent-increase'];
+  static get observedAttributes() {
+    return ['rent', 'rent-increase'];
+  }
 
   constructor() {
     super();
@@ -14,13 +16,13 @@ class RentModule extends HTMLElement {
             <tr>
               <th>Rent</th>
               <td>
-                <input id="${this.#ids[0]}" type="number" min="0">kr
+                <input id="${RentModule.observedAttributes[0]}" type="number" min="0">kr
               </td>
             </tr>
             <tr>
               <th>Rent increase</th>
               <td>
-                <input id="${this.#ids[1]}" type="number" min="0" step="0.1">%
+                <input id="${RentModule.observedAttributes[1]}" type="number" min="0" step="0.1">%
               </td>
             </tr>
           </tbody>
@@ -28,14 +30,16 @@ class RentModule extends HTMLElement {
       </section>
     `;
 
-    for (const id of this.#ids) {
-      const inputElement = this.shadowRoot.getElementById(id);
-      const savedValue = window.localStorage.getItem(id);
-      if (!!savedValue) {
-        inputElement.value = savedValue;
+    for (const attribute of RentModule.observedAttributes) {
+      const inputElement = this.shadowRoot.getElementById(attribute);
+
+      const value = this.getAttribute(attribute);
+      if (!!value) {
+        inputElement.value = value;
       }
+
       inputElement.addEventListener('input', (e) => {
-        window.localStorage.setItem(id, e.target.value);
+        this.setAttribute(attribute, e.target.value);
       });
     }
   }
