@@ -19,17 +19,26 @@ class ApartmentCalculator extends HTMLElement {
       </header>
       <main>
         <year-module></year-module>
-        <year-module></year-module>
       </main>
     `;
 
-    const salaryModule = this.shadowRoot.querySelector('salary-module');
+    this.setupMutationObserver('salary-module');
+    this.setupMutationObserver('loan-module');
+    this.setupMutationObserver('rent-module');
+  }
+
+  setupMutationObserver(id) {
+    const module = this.shadowRoot.querySelector(id);
+    const yearModule = this.shadowRoot.querySelector('year-module');
+
     const mutationObserver = new MutationObserver((mutations, observer) => {
       for (const mutation of mutations) {
-        console.log(SalaryModule.observedAttributes);
+        const value = module.getAttribute(mutation.attributeName);
+        yearModule.setAttribute(mutation.attributeName, value);
       }
     });
-    mutationObserver.observe(salaryModule, { attributes: true });
+
+    mutationObserver.observe(module, { attributes: true });
   }
 }
 

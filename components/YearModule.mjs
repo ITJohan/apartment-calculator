@@ -1,4 +1,23 @@
 export default class YearModule extends HTMLElement {
+  static get observedAttributes() {
+    return [
+      'person-one-salary',
+      'person-two-salary',
+      'person-one-bonus',
+      'person-two-bonus',
+      'person-one-increase',
+      'person-two-increase',
+      'person-one-tax',
+      'person-two-tax',
+      'loan',
+      'apartment-costs',
+      'interest',
+      'interest-subsidies',
+      'rent',
+      'rent-increase',
+    ];
+  }
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -15,7 +34,9 @@ export default class YearModule extends HTMLElement {
         <td>15235123</td>
         <td>234222</td>
         <td>2364236</td>
-        <td>12345123</td>
+        <td id=${YearModule.observedAttributes[9]}>${this.getAttribute(
+        YearModule.observedAttributes[9]
+      )}</td>
         <td>3454357</td>
         <td>243573457</td>
         <td>23456234</td>
@@ -115,7 +136,7 @@ export default class YearModule extends HTMLElement {
               <td>28468346</td>
               <td>12398373</td>
               <td>8273456945</td>
-              <td>07248356</td>
+              <td id="${YearModule.observedAttributes[9]}-total"></td>
               <td>29875234</td>
               <td>92837412345</td>
               <td>2304598</td>
@@ -134,6 +155,13 @@ export default class YearModule extends HTMLElement {
       expandButton.textContent =
         expandButton.textContent === '➕' ? '➖' : '➕';
     });
+  }
+
+  attributeChangedCallback(name, _, newValue) {
+    const element = this.shadowRoot.getElementById(name);
+    const elementTotal = this.shadowRoot.getElementById(`${name}-total`);
+    element.innerText = newValue;
+    elementTotal.innerText = newValue * 12;
   }
 }
 
