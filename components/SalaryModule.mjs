@@ -1,14 +1,16 @@
 class SalaryModule extends HTMLElement {
-  #ids = [
-    'person-one-salary',
-    'person-two-salary',
-    'person-one-bonus',
-    'person-two-bonus',
-    'person-one-increase',
-    'person-two-increase',
-    'person-one-tax',
-    'person-two-tax',
-  ];
+  static get observedAttributes() {
+    return [
+      'person-one-salary',
+      'person-two-salary',
+      'person-one-bonus',
+      'person-two-bonus',
+      'person-one-increase',
+      'person-two-increase',
+      'person-one-tax',
+      'person-two-tax',
+    ];
+  }
 
   constructor() {
     super();
@@ -30,37 +32,37 @@ class SalaryModule extends HTMLElement {
             <tr>
               <th>Salary</th>
               <td>
-                <input id="${this.#ids[0]}" type="number" min="0">kr
+                <input id="${SalaryModule.observedAttributes[0]}" type="number" min="0">kr
               </td>
               <td>
-                <input id="${this.#ids[1]}" type="number" min="0">kr
+                <input id="${SalaryModule.observedAttributes[1]}" type="number" min="0">kr
               </td>
             </tr>
             <tr>
               <th>Bonus</th>
               <td>
-                <input id="${this.#ids[2]}" type="number" min="0">kr
+                <input id="${SalaryModule.observedAttributes[2]}" type="number" min="0">kr
               </td>
               <td>
-                <input id="${this.#ids[3]}" type="number" min="0">kr
+                <input id="${SalaryModule.observedAttributes[3]}" type="number" min="0">kr
               </td>
             </tr>
             <tr>
               <th>Yearly increase</th>
               <td>
-                <input id="${this.#ids[4]}" type="number" min="0" step="0.1">%
+                <input id="${SalaryModule.observedAttributes[4]}" type="number" min="0" step="0.1">%
               </td>
               <td>
-                <input id="${this.#ids[5]}" type="number" min="0" step="0.1">%
+                <input id="${SalaryModule.observedAttributes[5]}" type="number" min="0" step="0.1">%
               </td>
             </tr>
             <tr>
               <th>Tax</th>
               <td>
-                <input id="${this.#ids[6]}" type="number" min="0" step="0.1">%
+                <input id="${SalaryModule.observedAttributes[6]}" type="number" min="0" step="0.1">%
               </td>
               <td>
-                <input id="${this.#ids[7]}" type="number" min="0" step="0.1">%
+                <input id="${SalaryModule.observedAttributes[7]}" type="number" min="0" step="0.1">%
               </td>
             </tr>
           </tbody>
@@ -68,14 +70,16 @@ class SalaryModule extends HTMLElement {
       </section>
     `;
 
-    for (const id of this.#ids) {
-      const inputElement = this.shadowRoot.getElementById(id);
-      const savedValue = window.localStorage.getItem(id);
-      if (!!savedValue) {
-        inputElement.value = savedValue;
+    for (const attribute of SalaryModule.observedAttributes) {
+      const inputElement = this.shadowRoot.getElementById(attribute);
+
+      const value = this.getAttribute(attribute);
+      if (!!value) {
+        inputElement.value = value;
       }
+
       inputElement.addEventListener('input', (e) => {
-        window.localStorage.setItem(id, e.target.value);
+        this.setAttribute(attribute, e.target.value);
       });
     }
   }
