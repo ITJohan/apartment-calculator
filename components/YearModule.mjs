@@ -1,4 +1,4 @@
-class YearModule extends HTMLElement {
+export default class YearModule extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

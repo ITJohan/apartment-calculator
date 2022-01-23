@@ -1,4 +1,4 @@
-class SalaryModule extends HTMLElement {
+export default class SalaryModule extends HTMLElement {
   static get observedAttributes() {
     return [
       'person-one-salary',

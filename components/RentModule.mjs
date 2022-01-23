@@ -1,4 +1,4 @@
-class RentModule extends HTMLElement {
+export default class RentModule extends HTMLElement {
   static get observedAttributes() {
     return ['rent', 'rent-increase'];
   }

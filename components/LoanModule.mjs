@@ -1,4 +1,4 @@
-class LoanModule extends HTMLElement {
+export default class LoanModule extends HTMLElement {
   static get observedAttributes() {
     return ['loan', 'apartment-costs', 'interest', 'interest-subsidies'];
   }

@@ -1,7 +1,7 @@
-import './components/SalaryModule.mjs';
-import './components/LoanModule.mjs';
-import './components/RentModule.mjs';
-import './components/YearModule.mjs';
+import SalaryModule from './components/SalaryModule.mjs';
+import LoanModule from './components/LoanModule.mjs';
+import RentModule from './components/RentModule.mjs';
+import YearModule from './components/YearModule.mjs';
 
 class ApartmentCalculator extends HTMLElement {
   constructor() {
@@ -22,6 +22,14 @@ class ApartmentCalculator extends HTMLElement {
         <year-module></year-module>
       </main>
     `;
+
+    const salaryModule = this.shadowRoot.querySelector('salary-module');
+    const mutationObserver = new MutationObserver((mutations, observer) => {
+      for (const mutation of mutations) {
+        console.log(SalaryModule.observedAttributes);
+      }
+    });
+    mutationObserver.observe(salaryModule, { attributes: true });
   }
 }
 
