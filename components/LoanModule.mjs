@@ -1,12 +1,18 @@
 export default class LoanModule extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
   static get observedAttributes() {
     return ['loan', 'apartment-costs', 'interest', 'interest-subsidies'];
   }
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
+  connectedCallback() {
+    this.render();
+  }
 
+  render() {
     this.shadowRoot.innerHTML = `
       <style>@import './ApartmentCalculator.css';</style>
       <section>

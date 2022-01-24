@@ -1,12 +1,18 @@
 export default class RentModule extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
   static get observedAttributes() {
     return ['rent', 'rent-increase'];
   }
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
+  connectedCallback() {
+    this.render();
+  }
 
+  render() {
     this.shadowRoot.innerHTML = `
       <style>@import './ApartmentCalculator.css';</style>
       <section>

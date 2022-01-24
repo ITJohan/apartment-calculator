@@ -1,4 +1,9 @@
 export default class SalaryModule extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
   static get observedAttributes() {
     return [
       'person-one-salary',
@@ -12,10 +17,11 @@ export default class SalaryModule extends HTMLElement {
     ];
   }
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
+  connectedCallback() {
+    this.render();
+  }
 
+  render() {
     this.shadowRoot.innerHTML = `
       <style>@import './ApartmentCalculator.css';</style>
       <section>

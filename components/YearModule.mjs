@@ -1,4 +1,9 @@
 export default class YearModule extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
   static get observedAttributes() {
     return [
       'person-one-salary',
@@ -18,34 +23,44 @@ export default class YearModule extends HTMLElement {
     ];
   }
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
+  attributeChangedCallback(name, _, newValue) {
+    const element = this.shadowRoot.getElementById(name);
+    const elementTotal = this.shadowRoot.getElementById(`${name}-total`);
+    element.innerText = newValue;
+    elementTotal.innerText = newValue * 12;
 
-    const generateMonthRow = (month) => {
-      return `
-      <tr>
-        <td>${month}</td>
-        <td>100 000 kr</td>
-        <td>100 000 kr</td>
-        <td>200 000 kr</td>
-        <td class="separator"></td>
-        <td>10123</td>
-        <td>15235123</td>
-        <td>234222</td>
-        <td>2364236</td>
-        <td id=${YearModule.observedAttributes[9]}>${this.getAttribute(
-        YearModule.observedAttributes[9]
-      )}</td>
-        <td>3454357</td>
-        <td>243573457</td>
-        <td>23456234</td>
-        <td class="separator"></td>
-        <td>11800</td>
-      </tr>
-      `;
-    };
+    this.render();
+  }
 
+  connectedCallback() {
+    this.render();
+  }
+
+  generateMonthRow(month) {
+    return `
+    <tr>
+      <td>${month}</td>
+      <td>100 000 kr</td>
+      <td>100 000 kr</td>
+      <td>200 000 kr</td>
+      <td class="separator"></td>
+      <td>10123</td>
+      <td>15235123</td>
+      <td>234222</td>
+      <td>2364236</td>
+      <td id=${YearModule.observedAttributes[9]}>${this.getAttribute(
+      YearModule.observedAttributes[9]
+    )}</td>
+      <td>3454357</td>
+      <td>243573457</td>
+      <td>23456234</td>
+      <td class="separator"></td>
+      <td>11800</td>
+    </tr>
+    `;
+  }
+
+  render() {
     this.shadowRoot.innerHTML = `
       <style>
         @import './ApartmentCalculator.css';
@@ -112,18 +127,18 @@ export default class YearModule extends HTMLElement {
             </tr>
           </thead>
           <tbody class="hide">
-            ${generateMonthRow('Jan')}
-            ${generateMonthRow('Feb')}
-            ${generateMonthRow('Mar')}
-            ${generateMonthRow('Apr')}
-            ${generateMonthRow('May')}
-            ${generateMonthRow('Jun')}
-            ${generateMonthRow('Jul')}
-            ${generateMonthRow('Aug')}
-            ${generateMonthRow('Sep')}
-            ${generateMonthRow('Oct')}
-            ${generateMonthRow('Nov')}
-            ${generateMonthRow('Dec')}
+            ${this.generateMonthRow('Jan')}
+            ${this.generateMonthRow('Feb')}
+            ${this.generateMonthRow('Mar')}
+            ${this.generateMonthRow('Apr')}
+            ${this.generateMonthRow('May')}
+            ${this.generateMonthRow('Jun')}
+            ${this.generateMonthRow('Jul')}
+            ${this.generateMonthRow('Aug')}
+            ${this.generateMonthRow('Sep')}
+            ${this.generateMonthRow('Oct')}
+            ${this.generateMonthRow('Nov')}
+            ${this.generateMonthRow('Dec')}
           </tbody>
           <tfoot>
             <tr>
@@ -155,13 +170,6 @@ export default class YearModule extends HTMLElement {
       expandButton.textContent =
         expandButton.textContent === '➕' ? '➖' : '➕';
     });
-  }
-
-  attributeChangedCallback(name, _, newValue) {
-    const element = this.shadowRoot.getElementById(name);
-    const elementTotal = this.shadowRoot.getElementById(`${name}-total`);
-    element.innerText = newValue;
-    elementTotal.innerText = newValue * 12;
   }
 }
 
