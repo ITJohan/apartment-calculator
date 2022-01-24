@@ -25,25 +25,47 @@ export default class YearModule extends HTMLElement {
 
   attributeChangedCallback(name, _, newValue) {
     switch (name) {
-      case YearModule.observedAttributes[0]:
+      case YearModule.observedAttributes[0]: {
+        // Person one salary
+        const elements = this.shadowRoot.querySelectorAll(`.${name}`);
+        const totalElement = this.shadowRoot.getElementById(`${name}-total`);
+
+        console.log(elements, totalElement);
+
+        totalElement.innerText = `${newValue * 12} kr`;
+
+        for (const element of elements) {
+          element.innerText = `${newValue} kr`;
+        }
+
         break;
+      }
       case YearModule.observedAttributes[1]:
+        // Person two salary
         break;
       case YearModule.observedAttributes[2]:
+        // Person one bonus
         break;
       case YearModule.observedAttributes[3]:
+        // Person two bonus
         break;
       case YearModule.observedAttributes[4]:
+        // Person one increase
         break;
       case YearModule.observedAttributes[5]:
+        // Person two increase
         break;
       case YearModule.observedAttributes[6]:
+        // Person one tax
         break;
       case YearModule.observedAttributes[7]:
+        // Person two tax
         break;
       case YearModule.observedAttributes[8]:
+        // Loan
         break;
-      case YearModule.observedAttributes[9]:
+      case YearModule.observedAttributes[9]: {
+        // Apartment costs
         const elements = this.shadowRoot.querySelectorAll(`.${name}`);
         const totalElement = this.shadowRoot.getElementById(`${name}-total`);
 
@@ -54,13 +76,18 @@ export default class YearModule extends HTMLElement {
         }
 
         break;
+      }
       case YearModule.observedAttributes[10]:
+        // Interest
         break;
       case YearModule.observedAttributes[11]:
+        // Interest subsidies
         break;
       case YearModule.observedAttributes[12]:
+        // Rent
         break;
       case YearModule.observedAttributes[13]:
+        // Rent increase
         break;
       default:
         return;
@@ -75,20 +102,20 @@ export default class YearModule extends HTMLElement {
     return `
     <tr>
       <td>${month}</td>
-      <td>0 kr</td>
-      <td>0 kr</td>
-      <td>0 kr</td>
+      <td class="${YearModule.observedAttributes[0]}">0 kr</td>
+      <td class="${YearModule.observedAttributes[1]}">0 kr</td>
+      <td class="${YearModule.observedAttributes[2]}">0 kr</td>
       <td class="separator"></td>
-      <td>0 kr</td>
-      <td>0 kr</td>
-      <td>0 kr</td>
-      <td>0 kr</td>
+      <td class="${YearModule.observedAttributes[3]}">0 kr</td>
+      <td class="${YearModule.observedAttributes[4]}">0 kr</td>
+      <td class="${YearModule.observedAttributes[5]}">0 kr</td>
+      <td class="${YearModule.observedAttributes[6]}">0 kr</td>
+      <td class="${YearModule.observedAttributes[7]}">0 kr</td>
+      <td class="${YearModule.observedAttributes[8]}">0 kr</td>
       <td class="${YearModule.observedAttributes[9]}">0 kr</td>
-      <td>0 kr</td>
-      <td>0 kr</td>
-      <td>0 kr</td>
+      <td class="${YearModule.observedAttributes[10]}">0 kr</td>
       <td class="separator"></td>
-      <td>0 kr</td>
+      <td class="${YearModule.observedAttributes[11]}">0 kr</td>
     </tr>
     `;
   }
@@ -178,20 +205,20 @@ export default class YearModule extends HTMLElement {
           <tfoot>
             <tr>
               <th>Total</th>
-              <th>0 kr</th>
-              <th>0 kr</th>
-              <th>0 kr</th>
+              <th id="${YearModule.observedAttributes[0]}-total">0 kr</th>
+              <th id="${YearModule.observedAttributes[1]}-total">0 kr</th>
+              <th id="${YearModule.observedAttributes[2]}-total">0 kr</th>
               <th class="separator"></th>
-              <th>0 kr</th>
-              <th>0 kr</th>
-              <th>0 kr</th>
-              <th>0 kr</th>
+              <th id="${YearModule.observedAttributes[3]}-total">0 kr</th>
+              <th id="${YearModule.observedAttributes[4]}-total">0 kr</th>
+              <th id="${YearModule.observedAttributes[5]}-total">0 kr</th>
+              <th id="${YearModule.observedAttributes[6]}-total">0 kr</th>
+              <th id="${YearModule.observedAttributes[7]}-total">0 kr</th>
+              <th id="${YearModule.observedAttributes[8]}-total">0 kr</th>
               <th id="${YearModule.observedAttributes[9]}-total">0 kr</th>
-              <th>0 kr</th>
-              <th>0 kr</th>
-              <th>0 kr</th>
+              <th id="${YearModule.observedAttributes[10]}-total">0 kr</th>
               <th class="separator"></th>
-              <th>0 kr</th>
+              <th id="${YearModule.observedAttributes[11]}-total">0 kr</th>
             </tr>
           </tfoot>
         </table>
