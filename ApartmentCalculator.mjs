@@ -7,6 +7,12 @@ class ApartmentCalculator extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+
+    const yearModules = [];
+    for (let i = 0; i < 25; i++) {
+      yearModules.push(`<year-module year="${i}"></year-module>`);
+    }
+
     this.shadowRoot.innerHTML += `
       <style>@import './ApartmentCalculator.css';</style>
       <header>
@@ -18,7 +24,7 @@ class ApartmentCalculator extends HTMLElement {
         </nav>
       </header>
       <main>
-        <year-module></year-module>
+        ${yearModules.join('')}
       </main>
     `;
 
@@ -29,12 +35,14 @@ class ApartmentCalculator extends HTMLElement {
 
   setupMutationObserver(id) {
     const module = this.shadowRoot.querySelector(id);
-    const yearModule = this.shadowRoot.querySelector('year-module');
+    const yearModules = this.shadowRoot.querySelectorAll('year-module');
 
-    const mutationObserver = new MutationObserver((mutations, observer) => {
+    const mutationObserver = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         const value = module.getAttribute(mutation.attributeName);
-        yearModule.setAttribute(mutation.attributeName, value);
+        yearModules.forEach((yearModule) => {
+          yearModule.setAttribute(mutation.attributeName, value);
+        });
       }
     });
 

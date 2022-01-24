@@ -20,6 +20,7 @@ export default class YearModule extends HTMLElement {
       'interest-subsidies',
       'rent',
       'rent-increase',
+      'year',
     ];
   }
 
@@ -29,8 +30,6 @@ export default class YearModule extends HTMLElement {
         // Person one salary
         const elements = this.shadowRoot.querySelectorAll(`.${name}`);
         const totalElement = this.shadowRoot.getElementById(`${name}-total`);
-
-        console.log(elements, totalElement);
 
         totalElement.innerText = `${newValue * 12} kr`;
 
@@ -121,7 +120,7 @@ export default class YearModule extends HTMLElement {
   }
 
   render() {
-    console.log('rendering year module');
+    const year = +this.getAttribute(YearModule.observedAttributes[14]) + 1;
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -165,7 +164,7 @@ export default class YearModule extends HTMLElement {
         <table>
           <caption>
             <div class="header">
-              <h4>Year 1</h4>
+              <h4>Year ${year}</h4>
               <button id="expand-button">➕</button>
             </div>
           </caption>
