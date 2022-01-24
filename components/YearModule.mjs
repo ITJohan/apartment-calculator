@@ -24,12 +24,47 @@ export default class YearModule extends HTMLElement {
   }
 
   attributeChangedCallback(name, _, newValue) {
-    const element = this.shadowRoot.getElementById(name);
-    const elementTotal = this.shadowRoot.getElementById(`${name}-total`);
-    element.innerText = newValue;
-    elementTotal.innerText = newValue * 12;
+    switch (name) {
+      case YearModule.observedAttributes[0]:
+        break;
+      case YearModule.observedAttributes[1]:
+        break;
+      case YearModule.observedAttributes[2]:
+        break;
+      case YearModule.observedAttributes[3]:
+        break;
+      case YearModule.observedAttributes[4]:
+        break;
+      case YearModule.observedAttributes[5]:
+        break;
+      case YearModule.observedAttributes[6]:
+        break;
+      case YearModule.observedAttributes[7]:
+        break;
+      case YearModule.observedAttributes[8]:
+        break;
+      case YearModule.observedAttributes[9]:
+        const elements = this.shadowRoot.querySelectorAll(`.${name}`);
+        const totalElement = this.shadowRoot.getElementById(`${name}-total`);
 
-    this.render();
+        totalElement.innerText = `${newValue * 12} kr`;
+
+        for (const element of elements) {
+          element.innerText = `${newValue} kr`;
+        }
+
+        break;
+      case YearModule.observedAttributes[10]:
+        break;
+      case YearModule.observedAttributes[11]:
+        break;
+      case YearModule.observedAttributes[12]:
+        break;
+      case YearModule.observedAttributes[13]:
+        break;
+      default:
+        return;
+    }
   }
 
   connectedCallback() {
@@ -40,27 +75,27 @@ export default class YearModule extends HTMLElement {
     return `
     <tr>
       <td>${month}</td>
-      <td>100 000 kr</td>
-      <td>100 000 kr</td>
-      <td>200 000 kr</td>
+      <td>0 kr</td>
+      <td>0 kr</td>
+      <td>0 kr</td>
       <td class="separator"></td>
-      <td>10123</td>
-      <td>15235123</td>
-      <td>234222</td>
-      <td>2364236</td>
-      <td id=${YearModule.observedAttributes[9]}>${this.getAttribute(
-      YearModule.observedAttributes[9]
-    )}</td>
-      <td>3454357</td>
-      <td>243573457</td>
-      <td>23456234</td>
+      <td>0 kr</td>
+      <td>0 kr</td>
+      <td>0 kr</td>
+      <td>0 kr</td>
+      <td class="${YearModule.observedAttributes[9]}">0 kr</td>
+      <td>0 kr</td>
+      <td>0 kr</td>
+      <td>0 kr</td>
       <td class="separator"></td>
-      <td>11800</td>
+      <td>0 kr</td>
     </tr>
     `;
   }
 
   render() {
+    console.log('rendering year module');
+
     this.shadowRoot.innerHTML = `
       <style>
         @import './ApartmentCalculator.css';
@@ -143,20 +178,20 @@ export default class YearModule extends HTMLElement {
           <tfoot>
             <tr>
               <th>Total</th>
-              <td>1000000</td>
-              <td>23200000</td>
-              <td>21023459</td>
-              <td class="separator"></td>
-              <td>284383246</td>
-              <td>28468346</td>
-              <td>12398373</td>
-              <td>8273456945</td>
-              <td id="${YearModule.observedAttributes[9]}-total"></td>
-              <td>29875234</td>
-              <td>92837412345</td>
-              <td>2304598</td>
-              <td class="separator"></td>
-              <td>90283476</td>
+              <th>0 kr</th>
+              <th>0 kr</th>
+              <th>0 kr</th>
+              <th class="separator"></th>
+              <th>0 kr</th>
+              <th>0 kr</th>
+              <th>0 kr</th>
+              <th>0 kr</th>
+              <th id="${YearModule.observedAttributes[9]}-total">0 kr</th>
+              <th>0 kr</th>
+              <th>0 kr</th>
+              <th>0 kr</th>
+              <th class="separator"></th>
+              <th>0 kr</th>
             </tr>
           </tfoot>
         </table>

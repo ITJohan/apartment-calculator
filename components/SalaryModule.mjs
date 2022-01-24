@@ -22,6 +22,8 @@ export default class SalaryModule extends HTMLElement {
   }
 
   render() {
+    console.log('rendering salary module');
+
     this.shadowRoot.innerHTML = `
       <style>@import './ApartmentCalculator.css';</style>
       <section>

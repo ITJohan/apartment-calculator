@@ -1,7 +1,7 @@
-import SalaryModule from './components/SalaryModule.mjs';
-import LoanModule from './components/LoanModule.mjs';
-import RentModule from './components/RentModule.mjs';
-import YearModule from './components/YearModule.mjs';
+import './components/SalaryModule.mjs';
+import './components/LoanModule.mjs';
+import './components/RentModule.mjs';
+import './components/YearModule.mjs';
 
 class ApartmentCalculator extends HTMLElement {
   constructor() {
